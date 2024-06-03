@@ -48,6 +48,15 @@ class TapHubspot(Tap):
             th.DateTimeType,
             description="Latest record date to sync",
         ),
+        th.Property(
+            "stream_type_conformance",
+            th.StringType,
+            default="root_only",
+            description="The level of type conformance to apply to streams "
+            "(see: https://sdk.meltano.com/en/latest/classes/singer_sdk.Stream.html#singer_sdk.Stream.TYPE_CONFORMANCE_LEVEL). "
+            "Defaults to 'root_only'. Must be one of: 'none', 'root_only', 'recursive'",
+            allowed_values=["none", "root_only", "recursive"],
+        ),
     ).to_dict()
 
     def discover_streams(self) -> list[streams.HubspotStream]:

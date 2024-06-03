@@ -4,8 +4,9 @@ project_id: "tap-hubspot"
 default_environment: dev
 plugins:
   extractors:
-  - name: "tap-hubspot"
-    namespace: "tap_hubspot"
+  - name: tap-hubspot
+    variant: firehose
+    namespace: tap_hubspot
     pip_url: -e .
     capabilities:
     - state
@@ -19,7 +20,10 @@ plugins:
     - name: start_date
       value: '2023-01-01T00:00:00Z'
     - name: end_date
-      value: '2023-05-22T00:00:00Z'      
+      value: '2023-05-22T00:00:00Z'
+    - name: stream_type_conformance
+      kind: string
+
 environments:
 - name: dev
 - name: staging
